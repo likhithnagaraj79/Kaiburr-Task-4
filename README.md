@@ -1,31 +1,73 @@
+# Task 4
+
+# Table of Contents
+
+* [Step 1: Start Jenkins](#step-1-start-jenkins)
+    * [Navigate to Jenkins Directory](#step-1-start-jenkins)
+    * [Start Jenkins Container](#start-jenkins-container-image)
+    * [Check Jenkins Status](#check-if-jenkins-is-running)
+    * [Access Jenkins](#access-jenkins-open-browser-and-go-to-httplocalhost8081jenkins)
+* [Step 2: Get Jenkins Initial Password](#step-2-get-jenkins-initial-password)
+* [Step 3: Complete Jenkins Setup Wizard](#step-3-complete-jenkins-setup-wizard)
+    * [Install Suggested Plugins](#install-suggested-plugins)
+    * [Create Admin User](#create-admin-user)
+    * [Configure Jenkins URL](#jenkins-url)
+* [Step 4: Configure Jenkins Tools](#step-4-configure-jenkins-tools)
+    * [Configure Maven](#configure-maven)
+    * [Configure JDK](#configure-jdk)
+    * [Configure NodeJS](#configure-nodejs)
+* [Step 5: Add Docker Hub Credentials](#step-5-add-docker-hub-credentials)
+* [Step 6: Create Jenkins Pipeline for Backend (Task API)](#step-6-create-jenkins-pipeline-for-backend-task-api)
+
 # Step 1: Start Jenkins
 
-#Navigate to jenkins directory Image 1.1
+#Navigate to jenkins directory 
 cd jenkins
 
-#Start Jenkins container Image 1.2, 1.3, 
+![Navigate to jenkins](./Snapshots/1.1.png)
+
+#Start Jenkins container Image  
 docker-compose up -d
 
-#Check if Jenkins is running Image 1.4
+![Docker Compose](./Snapshots/1.2.png)
+
+![Done Docker Compose](./Snapshots/1.3.png)
+
+#Check if Jenkins is running 
 docker ps
 
-#Wait for Jenkins to start (30-60 seconds) Image 1.5
+![Jenkins running](./Snapshots/1.4.png)
+
+#Wait for Jenkins to start (30-60 seconds) 
 #Check logs if needed
 docker logs -f jenkins
 
-# Access Jenkins: Open browser and go to http://localhost:8081/jenkins , Image 1.6
+![Jenkins started or not?](./Snapshots/1.5.png)
 
-# Step 2: Get Jenkins Initial Password Image 2.1
+# Access Jenkins: Open browser and go to http://localhost:8081/jenkins 
+
+![UI of Jenkins](./Snapshots/1.6.png)
+
+# Step 2: Get Jenkins Initial Password 
+
+![Password for Jenkins](./Snapshots/2.1.png)
 
 # Step 3: Complete Jenkins Setup Wizard
 
     Install Plugins:
 
-        Select "Install suggested plugins", Image 3.1
-        Wait for installation to complete, Image 3.2
+        Select "Install suggested plugins"
+
+![Install plugins](./Snapshots/3.1.png)
+
+        Wait for installation to complete
+
+![Complete Installation](./Snapshots/3.2.png)
 
 
-    Create Admin User: Image 3.3
+    Create Admin User: 
+
+![Creating Admin User](./Snapshots/3.3.png)
 
         Username: admin (or your choice)
         Password: admin123 (or your choice)
@@ -35,22 +77,30 @@ docker logs -f jenkins
 
     Jenkins URL:
 
-        Keep default: http://localhost:8081/jenkins/ Image 3.4
+        Keep default: http://localhost:8081/jenkins/ 
+
+![Keep Default url](./Snapshots/3.4.png)
+
         Click "Save and Finish"
 
-        Image 3.5
+![Save and Finish](./Snapshots/3.5.png)
 
 # Step 4: Configure Jenkins Tools
 
 Configure Maven:
 
-    Go to: Manage Jenkins → Global Tool Configuration, Image 4.1
+    Go to: Manage Jenkins → Global Tool Configuration
+
+![Manage Jenkins](./Snapshots/4.1.png)
+
     Scroll to Maven section
     Click Add Maven
 
     Name: Maven-3.9.5
     Check "Install automatically"
-    Version: 3.9.5,   Image 4.3
+    Version: 3.9.5,   
+
+![Maven](./Snapshots/4.3.png)
 
 
 Click Save
@@ -66,7 +116,9 @@ Click Save
     Version: jdk-17.0.9+9
 
 
-    Click Save, Image 4.4
+    Click Save
+
+![JDK-17](./Snapshots/4.4.png)
 
 Configure NodeJS:
 
@@ -76,7 +128,9 @@ Configure NodeJS:
     Click Available tab
     Search for "NodeJS"
     Install "NodeJS Plugin"
-    Restart Jenkins when done,   Image 4.2
+    Restart Jenkins when done
+
+![NodeJS](./Snapshots/4.2.png)
 
 
     After restart, go to Manage Jenkins → Global Tool Configuration
@@ -93,8 +147,14 @@ Configure NodeJS:
 # Step 5: Add Docker Hub Credentials
 
 Go to: Manage Jenkins → Manage Credentials
-Click on (global) domain.,  Image 5.1
-Click Add Credentials ,     Image 5.2
+Click on (global) domain.
+
+![Global Configuration](./Snapshots/5.1.png)
+
+Click Add Credentials 
+
+![Adding Credentials](./Snapshots/5.2.png)
+
 Fill in:
 
 Kind: Username with password
@@ -107,15 +167,21 @@ Description: Docker Hub Credentials
 
 Click Create
 
-Image 5.3
+![Credentials](./Snapshots/5.3.png)
 
-Image 5.4
+![After Creating](./Snapshots/5.4.png)
 
 # Step 6: Create Jenkins Pipeline for Backend (Task API)
 
 
-From Jenkins Dashboard, click New Item ,  Image 6.1
-Enter name: task-api-pipeline ,   Image 6.2
+From Jenkins Dashboard, click New Item 
+
+![New Item](./Snapshots/6.1.png)
+
+Enter name: task-api-pipeline 
+
+![task-api-pipeline](./Snapshots/6.2.png)
+
 Select: Pipeline
 Click OK
 In Configuration page:
@@ -123,6 +189,14 @@ In Configuration page:
 Description: "CI/CD Pipeline for Task API"
 Pipeline section:
 
-Definition: Pipeline script , Image 6.3
+Definition: Pipeline script 
 
-Image 6.4
+![Pipeline Script](./Snapshots/6.3.png)
+
+Click on Save
+
+![After Clicking](./Snapshots/6.4.png)
+
+Final Pipeline
+
+![Pipeline](./Snapshots/6.5.png)
